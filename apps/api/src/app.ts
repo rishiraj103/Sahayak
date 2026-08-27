@@ -11,7 +11,7 @@ const submissionDate = z.string().regex(/^2026-\d{2}-\d{2}$/);
 export function buildApp(repository: Repository, explanationService: ExplanationService, corsOrigin = 'http://localhost:5173') {
   const app = Fastify({ logger: true });
   void app.register(cors, { origin: corsOrigin }); void app.register(rateLimit, { max: 60, timeWindow: '1 minute' });
-  app.setErrorHandler((error, request, reply) => { request.log.error(error); const statusCode = 'statusCode' in error && typeof error.statusCode === 'number' && error.statusCode >= 400 && error.statusCode < 500 ? error.statusCode : 503; void reply.code(statusCode).send({ code: statusCode === 503 ? 'SERVICE_UNAVAILABLE' : 'INVALID_REQUEST' }); });
+  app.setErrorHandler((error, request, reply) => { request.log.error(error); const candidate = error as { statusCode?: number }; const statusCode = typeof candidate.statusCode === 'number' && candidate.statusCode >= 400 && candidate.statusCode < 500 ? candidate.statusCode : 503; void reply.code(statusCode).send({ code: statusCode === 503 ? 'SERVICE_UNAVAILABLE' : 'INVALID_REQUEST' }); });
   async function load(params: unknown, query: unknown) {
     const number = applicationNumber.parse(z.object({ applicationNumber }).parse(params).applicationNumber);
     const date = submissionDate.parse(z.object({ submissionDate }).parse(query).submissionDate);
