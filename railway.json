@@ -1,5 +1,5 @@
 {
   "$schema": "https://railway.app/railway.schema.json",
-  "build": { "builder": "NIXPACKS", "buildCommand": "npm ci --include=dev && npm run build -w @sahayak/api" },
+  "build": { "builder": "NIXPACKS", "buildCommand": "npm install --include=dev && npm run build -w @sahayak/api" },
   "deploy": { "startCommand": "npm run start -w @sahayak/api", "healthcheckPath": "/healthz", "healthcheckTimeout": 60, "restartPolicyType": "ON_FAILURE", "restartPolicyMaxRetries": 5 }
 }
