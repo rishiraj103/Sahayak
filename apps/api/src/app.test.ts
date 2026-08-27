@@ -1,0 +1,10 @@
+import { afterEach, describe, expect, it } from 'vitest';
+import { buildApp } from './app.js';
+import { DisabledExplanationService } from './explanations.js';
+import { MemoryRepository } from './repository.js';
+
+describe('API', () => { const apps: ReturnType<typeof buildApp>[] = []; const create = () => { const app = buildApp(new MemoryRepository(), new DisabledExplanationService()); apps.push(app); return app; }; afterEach(async () => { await Promise.all(apps.splice(0).map((app) => app.close())); });
+  it('returns a deterministic dashboard for a valid synthetic record', async () => { const response = await create().inject('/api/v1/applications/INC-2026-01842?submissionDate=2026-08-16'); expect(response.statusCode).toBe(200); expect(response.json().decision.canEscalate).toBe(true); });
+  it('persists each eligible grievance in the repository session', async () => { const app = create(); const url = '/api/v1/applications/INC-2026-01842/grievances?submissionDate=2026-08-16'; const first = await app.inject({ method: 'POST', url }); const second = await app.inject({ method: 'POST', url }); expect(first.statusCode).toBe(201); expect(second.statusCode).toBe(201); expect(first.json().grievanceNumber).not.toBe(second.json().grievanceNumber); const tracked = await app.inject(`/api/v1/grievances/${first.json().grievanceNumber}`); expect(tracked.statusCode).toBe(200); });
+  it('rejects an ineligible grievance', async () => { const response = await create().inject({ method: 'POST', url: '/api/v1/applications/INC-2026-01844/grievances?submissionDate=2026-08-24' }); expect(response.statusCode).toBe(409); });
+});

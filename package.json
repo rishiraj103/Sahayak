@@ -1,0 +1,14 @@
+{
+  "name": "build-what-moves-india",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @sahayak/api",
+    "dev:web": "npm run dev -w @sahayak/web",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "db:migrate": "npm run db:migrate -w @sahayak/api",
+    "db:seed": "npm run db:seed -w @sahayak/api"
+  },
+  "engines": { "node": ">=20" }
+}
