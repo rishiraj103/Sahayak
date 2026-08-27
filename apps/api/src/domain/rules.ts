@@ -8,8 +8,8 @@ export function evaluateApplication(application: Application, now = new Date()):
   if (!currentStage) throw new Error('Application has no current stage');
   const elapsedDays = currentStage.startedAt ? Math.max(0, Math.floor((now.getTime() - Date.parse(currentStage.startedAt)) / 86_400_000)) : 0;
   const actionRequired = Boolean(application.action?.active && application.action.required);
-  const isDelayed = elapsedDays > currentStage.expectedMaxDays;
   const terminal = application.currentStage === 'DELIVERED' || application.status === 'APPROVED';
+  const isDelayed = !terminal && elapsedDays > currentStage.expectedMaxDays;
   const canEscalate = isDelayed && !actionRequired && !terminal;
   return { elapsedDays, isDelayed, actionRequired, canEscalate, escalationReason: canEscalate ? 'This application has exceeded the expected duration for its current stage.' : null, currentStage };
 }
