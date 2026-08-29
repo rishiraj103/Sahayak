@@ -13,19 +13,22 @@
 
 /* Keep the initial lookup experience entirely within a desktop viewport. */
 @media (min-width: 701px) and (min-height: 701px) {
-  main:not(:has(.dashboard)) { min-height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
-  main:not(:has(.dashboard)) .topbar { width: min(1160px, 100%); padding: 14px 28px; }
-  main:not(:has(.dashboard)) .brand { font-size: 1.28rem; }
-  main:not(:has(.dashboard)) .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
-  main:not(:has(.dashboard)) .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
-  main:not(:has(.dashboard)) .eyebrow { margin-bottom: 8px; font-size: .72rem; }
-  main:not(:has(.dashboard)) .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
-  main:not(:has(.dashboard)) .hero-copy { max-width: 650px; margin-top: 0; font-size: 1rem; line-height: 1.5; }
-  main:not(:has(.dashboard)) .lookup { margin-top: 22px; }
-  main:not(:has(.dashboard)) .lookup label { gap: 6px; }
-  main:not(:has(.dashboard)) .lookup input { padding: 11px 13px; }
-  main:not(:has(.dashboard)) .lookup button { padding: 12px; }
-  main:not(:has(.dashboard)) .examples { margin-top: 14px; }
-  main:not(:has(.dashboard)) .error { margin-top: 12px; }
-  main:not(:has(.dashboard)) footer { padding: 12px 24px; font-size: .78rem; }
+  html, body, #root { height: 100%; overflow: hidden; }
+  main { height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
+  main .topbar { width: min(1160px, 100%); padding: 14px 28px; }
+  main .brand { font-size: 1.28rem; }
+  main .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
+  main .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
+  main .eyebrow { margin-bottom: 8px; font-size: .72rem; }
+  main .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
+  main .hero-copy { max-width: 650px; margin-top: 0; font-size: 1rem; line-height: 1.5; }
+  main .lookup { margin-top: 22px; }
+  main .lookup label { gap: 6px; }
+  main .lookup input { padding: 11px 13px; }
+  main .lookup button { padding: 12px; }
+  main .examples { margin-top: 14px; }
+  main .error { margin-top: 12px; }
+  main footer { padding: 12px 24px; font-size: .78rem; }
+  main:has(.dashboard) { height: auto; min-height: 100dvh; display: block; overflow: visible; }
+  body:has(.dashboard), body:has(.dashboard) #root { height: auto; overflow: visible; }
 }
