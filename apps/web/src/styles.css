@@ -12,7 +12,7 @@
 @media (max-width: 700px) { .topbar { padding: 18px 20px; }.topbar span { display: none; }.hero { padding: 48px 20px 40px; }.lookup, .content-grid { grid-template-columns: 1fr; }.dashboard { padding: 0 20px 48px; }.timeline ol { grid-template-columns: 1fr; gap: 0; }.timeline li { min-height: 68px; display: grid; grid-template-columns: 34px 1fr; }.timeline li:not(:last-child)::after { height: calc(100% - 20px); width: 2px; top: 25px; left: 12px; }.timeline li strong, .timeline li small { margin-top: 2px; }.grievance { display: block; }.grievance button { width: 100%; margin-top: 16px; } }
 
 /* Keep the initial lookup experience entirely within a desktop viewport. */
-@media (min-width: 701px) and (min-height: 701px) {
+@media (min-width: 701px) {
   html, body, #root { height: 100%; overflow: hidden; }
   main { height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
   main .topbar { width: min(1160px, 100%); padding: 14px 28px; }
