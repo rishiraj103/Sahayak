@@ -17,6 +17,7 @@
   main .topbar { width: min(1160px, 100%); padding: 14px 28px; }
   main .brand { font-size: 1.28rem; }
   main .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
+  .results-page .hero { min-height: calc(100dvh - 98px); }
   main .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
   main .eyebrow { margin-bottom: 8px; font-size: .72rem; }
   main .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
