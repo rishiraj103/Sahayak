@@ -13,22 +13,19 @@
 
 /* Keep the initial lookup experience entirely within a desktop viewport. */
 @media (min-width: 701px) {
-  html, body, #root { height: 100%; overflow: hidden; }
-  main { height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
-  main .topbar { width: min(1160px, 100%); padding: 14px 28px; }
-  main .brand { font-size: 1.28rem; }
-  main .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
-  main .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
-  main .eyebrow { margin-bottom: 8px; font-size: .72rem; }
-  main .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
-  main .hero-copy { max-width: 650px; margin-top: 0; font-size: 1rem; line-height: 1.5; }
-  main .lookup { margin-top: 22px; }
-  main .lookup label { gap: 6px; }
-  main .lookup input { padding: 11px 13px; }
-  main .lookup button { padding: 12px; }
-  main .examples { margin-top: 14px; }
-  main .error { margin-top: 12px; }
-  main footer { padding: 12px 24px; font-size: .78rem; }
-  main:has(.dashboard) { height: auto; min-height: 100dvh; display: block; overflow: visible; }
-  body:has(.dashboard), body:has(.dashboard) #root { height: auto; overflow: visible; }
+  .landing-page { height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
+  .landing-page .topbar { width: min(1160px, 100%); padding: 14px 28px; }
+  .landing-page .brand { font-size: 1.28rem; }
+  .landing-page .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
+  .landing-page .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
+  .landing-page .eyebrow { margin-bottom: 8px; font-size: .72rem; }
+  .landing-page .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
+  .landing-page .hero-copy { max-width: 650px; margin-top: 0; font-size: 1rem; line-height: 1.5; }
+  .landing-page .lookup { margin-top: 22px; }
+  .landing-page .lookup label { gap: 6px; }
+  .landing-page .lookup input { padding: 11px 13px; }
+  .landing-page .lookup button { padding: 12px; }
+  .landing-page .examples { margin-top: 14px; }
+  .landing-page .error { margin-top: 12px; }
+  .landing-page footer { padding: 12px 24px; font-size: .78rem; }
 }
