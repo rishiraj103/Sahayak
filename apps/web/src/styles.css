@@ -10,3 +10,22 @@
 .timeline { margin-top: 18px; }.timeline ol { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(5, 1fr); }.timeline li { position: relative; padding: 0 12px 0 0; min-height: 92px; color: #71867f; }.timeline li:not(:last-child)::after { content: ''; position: absolute; height: 2px; width: calc(100% - 28px); top: 12px; left: 28px; background: #d9e1dc; }.timeline li span { position: relative; z-index: 1; display: grid; place-items: center; height: 25px; width: 25px; border-radius: 50%; background: #eef1ed; font-weight: 700; }.timeline li.completed, .timeline li.current { color: #17322e; }.timeline li.completed span { background: #32836d; color: #fff; }.timeline li.current span { background: #e9a444; color: #17322e; }.timeline li strong, .timeline li small { display: block; margin-top: 9px; }.timeline li small { color: #6d817b; font-size: .78rem; line-height: 1.35; }
 .grievance { margin-top: 18px; border-radius: 12px; padding: 26px; display: flex; justify-content: space-between; align-items: center; gap: 18px; background: #e6eee8; }.grievance p { margin-bottom: 0; }.confirmation { margin-top: 18px; border-color: #8db8a2; background: #f3faf4; } footer { border-top: 1px solid #d8ddd5; color: #59716b; text-align: center; padding: 30px 24px; font-size: .83rem; }
 @media (max-width: 700px) { .topbar { padding: 18px 20px; }.topbar span { display: none; }.hero { padding: 48px 20px 40px; }.lookup, .content-grid { grid-template-columns: 1fr; }.dashboard { padding: 0 20px 48px; }.timeline ol { grid-template-columns: 1fr; gap: 0; }.timeline li { min-height: 68px; display: grid; grid-template-columns: 34px 1fr; }.timeline li:not(:last-child)::after { height: calc(100% - 20px); width: 2px; top: 25px; left: 12px; }.timeline li strong, .timeline li small { margin-top: 2px; }.grievance { display: block; }.grievance button { width: 100%; margin-top: 16px; } }
+
+/* Keep the initial lookup experience entirely within a desktop viewport. */
+@media (min-width: 701px) and (min-height: 701px) {
+  main:not(:has(.dashboard)) { min-height: 100dvh; display: grid; grid-template-rows: 60px minmax(0, 1fr) auto; overflow: hidden; }
+  main:not(:has(.dashboard)) .topbar { width: min(1160px, 100%); padding: 14px 28px; }
+  main:not(:has(.dashboard)) .brand { font-size: 1.28rem; }
+  main:not(:has(.dashboard)) .hero { min-height: 0; display: flex; flex-direction: column; justify-content: center; padding: 24px 28px 20px; }
+  main:not(:has(.dashboard)) .hero > * { width: min(1104px, 100%); margin-left: auto; margin-right: auto; }
+  main:not(:has(.dashboard)) .eyebrow { margin-bottom: 8px; font-size: .72rem; }
+  main:not(:has(.dashboard)) .hero h1 { max-width: 880px; margin-bottom: 12px; font-size: clamp(2.45rem, 4.6vw, 3.85rem); line-height: .98; }
+  main:not(:has(.dashboard)) .hero-copy { max-width: 650px; margin-top: 0; font-size: 1rem; line-height: 1.5; }
+  main:not(:has(.dashboard)) .lookup { margin-top: 22px; }
+  main:not(:has(.dashboard)) .lookup label { gap: 6px; }
+  main:not(:has(.dashboard)) .lookup input { padding: 11px 13px; }
+  main:not(:has(.dashboard)) .lookup button { padding: 12px; }
+  main:not(:has(.dashboard)) .examples { margin-top: 14px; }
+  main:not(:has(.dashboard)) .error { margin-top: 12px; }
+  main:not(:has(.dashboard)) footer { padding: 12px 24px; font-size: .78rem; }
+}
