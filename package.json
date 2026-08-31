@@ -1,5 +1,5 @@
 {
-  "name": "build-what-moves-india",
+  "name": "sahayak",
   "private": true,
   "workspaces": ["apps/*"],
   "scripts": {
